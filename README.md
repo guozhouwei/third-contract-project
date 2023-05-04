@@ -13,7 +13,7 @@ src/js/app.js
 src/index.html
 
 ## 如图!
-[Alt text](file://./images/001.png)
+[Alt text](https://github.com/guozhouwei/tmp/blob/main/images/001.png)
 
 
 ### step 1 页面展示
