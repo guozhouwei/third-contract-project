@@ -1,18 +1,22 @@
 # 代币合约开发
 
-## 合约位置
+## 代码位置
 
+## #合约位置
+```html
 contracts/ERC20Ext.sol
+```
 
-## js
+
+## #js
 
 src/js/app.js
 
-## html
+## #html
 
 src/index.html
 
-## 如图!
+## 首页
 ![](https://github.com/guozhouwei/tmp/blob/main/images/001.png)
 
 
