@@ -13,7 +13,7 @@ src/js/app.js
 src/index.html
 
 ## 如图!
-[Alt text](https://file%2B.vscode-resource.vscode-cdn.net/Users/zhouzhou/contract_workspace/third-contract-project/images/001.png?version%3D1683192459790)
+[Alt text](file://./images/001.png)
 
 
 ### step 1 页面展示
