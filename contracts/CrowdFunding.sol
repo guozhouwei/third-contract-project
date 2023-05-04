@@ -4,7 +4,11 @@
 
 pragma solidity 0.8.19;
 
-contract CrowdFundingStorage {
+
+//支持多继承
+contract CrowdFunding {
+    address immutable onwer;
+
     struct Campaign{
          address payable receiver;  //募资接收地址
          uint numFunders;   //募捐人数
@@ -19,18 +23,26 @@ contract CrowdFundingStorage {
 
     //活动数量
     uint public numCampaigns;
-     //k 募资活动编号，v 募捐活动
-     mapping(uint => Campaign) campaigns;
-     //k 募资活动编号，v 募捐人列表
-     mapping(uint => Funder[]) funders;
+    //k 募资活动编号，v 募捐活动
+    mapping(uint => Campaign) campaigns;
+    //k 募资活动编号，v 募捐人列表
+    mapping(uint => Funder[]) funders;
+
+    //？？？
+    Campaign[] public campaignsArray;
 
     //k1 募资活动编号，k2 参与人地址，v false 未参与，true 已参与
     mapping(uint => mapping(address => bool)) public isParticipate;
-}
 
-//支持多继承
-contract CrowdFunding is CrowdFundingStorage{
-    address immutable onwer;
+    //？？？
+    event CampaignLog(uint campaignID, address receiver, uint goal);
+
+    //只有合约创建人才能创建募资活动
+     modifier isOwner() {
+         require(msg.sender == onwer);
+         _;
+     }
+
     constructor(){
         //谁发布合约谁就是onwer
         onwer = msg.sender;
@@ -42,18 +54,15 @@ contract CrowdFunding is CrowdFundingStorage{
          _; //通过require后，继续执行函数内容
      }
 
-     //只有合约创建人才能创建募资活动
-     modifier isOwner() {
-         require(msg.sender == onwer);
-         _;
-     }
-
      //创建募资活动(入参：receiver 募捐活动接收地址，goal 募捐目标金额；返回参数：募捐活动编号)
-     function newCampaign(address payable receiver, uint goal) external isOwner() returns(uint compaignID) {
+    function newCampaign(address payable receiver, uint goal) external isOwner() returns(uint compaignID) {
         compaignID = numCampaigns++;    //todo compaignID算是定义了嘛？？？
         Campaign storage c = campaigns[compaignID]; //campaigns 不会数组越界嘛？？？
         c.receiver = receiver;
         c.fundingGoal = goal;
+        //???
+        campaignsArray.push(c);
+        emit CampaignLog(compaignID, receiver, goal);
      }
 
     //参与募资活动
