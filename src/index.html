@@ -28,8 +28,12 @@
 
         <span></span><input type="text" id="burn" value="2"/> (默认18个0)</span>
         <button onclick="burn()">Burn</button> 
-
+        <hr/>
         <div>⚠️：代币 mint、burn 请到小狐狸钱包查看 </div>
+        <hr/>
+
+        <button onclick="read()">Read Contract</button> 
+        <div>Contract totalSupply: <span id="account_balance"></span></div>
 
     </div>
     <script src="./js/web3.min.js"> </script>

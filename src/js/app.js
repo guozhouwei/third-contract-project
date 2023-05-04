@@ -459,30 +459,6 @@ async function connect() {
 
 }
 
-/**
- * sync function read() {
-	var contractAddress = document.getElementById("contract_address").value;
-	console.info("contractAddress：" + contractAddress);
-	console.info("accountAddress: " + accountAddress);
-	console.info("erc20Abi：" + erc20Abi);
-	var instance = new web3.eth.Contract(erc20Abi, contractAddress, {
-																		from: accountAddress, // 合约地址																	
-																		gasPrice: '20000000000' // 以 wei 为单位的默认 gas 价格，当前价格为 20 gwei
-																	});
-	console.info("instance: " + instance);
-
-	//todo 
-	//var balance = await instance.methods.balanceOf(contractAddress).call();
-	//var instance1 = new web3.eth.Contract(erc20Abi, contraaccountAddressctAddress, {
-																	//	from: accountAddress, // 合约地址																	
-																	//	gasPrice: '20000000000' // 以 wei 为单位的默认 gas 价格，当前价格为 20 gwei
-																//	});
-	//var balance = await instance1.methods.balanceOf(accountAddress).call();
-	//document.getElementById("token_balance").innerText = web3.utils.fromWei(balance);
-	//
-}
- */
-
 async function mint() {
 	var mintCount = document.getElementById("mint").value;
 	console.info("Mint Count:" + mintCount);
@@ -524,6 +500,29 @@ async function burn() {
 	  }
 
 }
+
+
+async function read() {
+	var contractAddress = document.getElementById("contract_address").value;
+	console.info("contractAddress：" + contractAddress);
+	console.info("erc20Abi：" + erc20Abi);
+	var instance = new web3.eth.Contract(erc20Abi, contractAddress, {
+																		from: accountAddress, // 合约地址																	
+																		gasPrice: '20000000000' // 以 wei 为单位的默认 gas 价格，当前价格为 20 gwei
+																	});
+	console.info("instance: " + instance);
+	 
+	try { 
+		//
+		var totalSupply = await instance.methods.totalSupply().send();
+		console.info(totalSupply);
+		document.getElementById("contractTotalSupply").innerText = totalSupply;
+	  }
+	  catch (e) {
+		console.error("burn error!" + e);
+	  }
+}
+
 
 /**
  * todo 注意！！！
