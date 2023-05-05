@@ -510,13 +510,10 @@ async function read() {
 																		from: accountAddress, // 合约地址																	
 																		gasPrice: '20000000000' // 以 wei 为单位的默认 gas 价格，当前价格为 20 gwei
 																	});
-	console.info("instance: " + instance);
 	 
 	try { 
-		//
-		var totalSupply = await instance.methods.totalSupply().send();
-		console.info(totalSupply);
-		document.getElementById("contractTotalSupply").innerText = totalSupply;
+		var totalSupply = await instance.methods.totalSupply().call();
+		document.getElementById("contract_totalSupply").innerText = web3.utils.fromWei(totalSupply);
 	  }
 	  catch (e) {
 		console.error("burn error!" + e);

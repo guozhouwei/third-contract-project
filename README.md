@@ -36,4 +36,5 @@ src/index.html
 ![](https://github.com/guozhouwei/tmp/blob/main/images/003.png)
 如上图：代币变为1.09999ADT
 
-
+### >>> step 5 totalSupply
+![](https://github.com/guozhouwei/tmp/blob/main/images/004.png)

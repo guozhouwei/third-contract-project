@@ -7,13 +7,13 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract ERC20Ext is ERC20, Ownable {
     // 支持增发，支持小会，交易收取手续费，交易部分销毁
-    using SafeMath for uint256; //todo ？？？
+    using SafeMath for uint256; //todo 
 
     uint public feeRatio; //手续费千分比：feeRatio/1000
     uint public burnRatio;  //销毁千分比：burnRatio/1000
     address public feeAddress;  //手续费配置地址
 
-    constructor () ERC20("THIS IS A EXTEND TOKEN","ADT"){}
+    constructor () ERC20("THIS IS A EXTEND TOKEN BY ZHOUZOU","GZW"){}
     
     function set(uint _feeRatio, uint _burnRatio, address _feeAddress) public onlyOwner {
         feeRatio = _feeRatio;

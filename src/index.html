@@ -17,23 +17,22 @@
 
         <hr/>
         
-        <div>Contract Address: <input type="text" id="contract_address" value="0x729511ef374d41Ccb44234D73Fd6c4a4dAbAd0DF" size="50" /> (已经部署到sepolia测试网络)</div>
-        <!-- 0x8d5e1aEEa3b9e50D73386968BCdB99cCA0FEC00b -->
+        <div>Contract Address: <input type="text" id="contract_address" value="0x9Fa4692696876D2A74914A4E29A48b86E1BC4141" size="50" /> (已经部署到sepolia测试网络)</div>
         <hr/>
 
-        <span><input type="text" id="mint" value="3"/> (默认18个0)</span>
+        <span><input type="text" id="mint" value=""/> (默认18个0，方便观察)</span>
         <button onclick="mint()">Mint</button> 
 
         <hr/>
 
-        <span></span><input type="text" id="burn" value="2"/> (默认18个0)</span>
+        <span></span><input type="text" id="burn" value=""/> (默认18个0，方便观察)</span>
         <button onclick="burn()">Burn</button> 
         <hr/>
         <div>⚠️：代币 mint、burn 请到小狐狸钱包查看 </div>
         <hr/>
 
-        <button onclick="read()">Read Contract</button> 
-        <div>Contract totalSupply: <span id="account_balance"></span></div>
+        <button onclick="read()">Show totalSupply</button> 
+        <div>Contract totalSupply: <span id="contract_totalSupply"></span></div>
 
     </div>
     <script src="./js/web3.min.js"> </script>
